@@ -2,29 +2,17 @@
  * JavaScript
  */
 
-const beer = {
-  name: 'Belgian Wit',
-  brewery: 'Steam Whistle Brewery',
-  keywords: ['pale', 'cloudy', 'spiced', 'crisp']
-};
-
-function renderKeywords(keywords) {
-  return `
-    <ul>
-      ${keywords
-        .map((keyword) => `<li>${keyword}</li>`)
-        .join('')
-      }
-    </ul>
-  `;
+function highlight(strings, ...values) {
+  let str = ''
+  strings.forEach((string, index) => {
+    str += `${string}<span contenteditable class="highlight">${values[index] || ''}</span>`;
+  });
+  return str;
 }
 
-const markup = `
-  <div class="beer">
-    <h2>${beer.name}</h2>
-    <p class="brewery">${beer.brewery}</p>
-    ${renderKeywords(beer.keywords)}
-  </div>
-`;
+const name = 'Snickers';
+const age = 2;
+const gender = 'male';
+const sentence = highlight`My dog ${name}(${gender}) is ${age * 7} years old.`;
 
-document.body.innerHTML = markup;
+document.body.innerHTML = sentence;
