@@ -2,24 +2,18 @@
  * JavaScript
  */
 
-const person = {
-  name: 'Harry Manchanda',
-  job: 'Frontend Web Developer',
-  aim: 'FullStack Web & Mobile Apps Developer',
-  city: 'Delhi',
-  bio: 'Harry is a really studious guy who want to learn the best of the web.',
-};
+const dogs = [
+  { name: 'Snickers', age: 2 },
+  { name: 'Hugo', age: 8 },
+  { name: 'Sunny', age: 1 }
+];
 
 const markup = `
-  <div class="person">
-    <h3>
-      ${person.name}
-      <span class="job">${person.job}</span>
-    </h3>
-    <p>Aim to be a <span class="aim">${person.aim}</span></p>
-    <p class="location">He lives in ${person.city}</p>
-    <p class="bio">${person.bio}</p>
-  </div>
+  <ul class="dogs">
+    ${dogs
+      .map((dog) => `<li>${dog.name} is ${dog.age * 7} years old</li>`)
+      .join('')}
+  </ul>
 `;
 
 document.body.innerHTML = markup;
