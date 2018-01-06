@@ -2,19 +2,29 @@
  * JavaScript
  */
 
-const song = {
-    name: 'Dying to live',
-    artist: 'Tupac',
-    featuring: 'Biggie Smalls'
-  };
+const beer = {
+  name: 'Belgian Wit',
+  brewery: 'Steam Whistle Brewery',
+  keywords: ['pale', 'cloudy', 'spiced', 'crisp']
+};
 
-  const markup = `
-    <div class="song">
-      <p>
-        ${song.name} — ${song.artist}
-        ${song.featuring ? `(Featuring ${song.featuring})` : ''}
-      </p>
-    </div>
+function renderKeywords(keywords) {
+  return `
+    <ul>
+      ${keywords
+        .map((keyword) => `<li>${keyword}</li>`)
+        .join('')
+      }
+    </ul>
   `;
+}
 
-  document.body.innerHTML = markup;
+const markup = `
+  <div class="beer">
+    <h2>${beer.name}</h2>
+    <p class="brewery">${beer.brewery}</p>
+    ${renderKeywords(beer.keywords)}
+  </div>
+`;
+
+document.body.innerHTML = markup;
